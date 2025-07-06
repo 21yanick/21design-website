@@ -1,82 +1,46 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ExternalLink, Github, ArrowRight, Code, Smartphone, Globe } from 'lucide-react'
+import { ExternalLink, ArrowRight, Code, Globe } from 'lucide-react'
 
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "Moderne Shopping-Plattform mit Next.js und Stripe Integration",
-    category: "Next.js",
-    icon: Code,
-    technologies: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
+    title: "Zeitgut Luzern",
+    description: "Saubere WordPress Website für Kreativagentur",
+    category: "WordPress",
+    icon: Globe,
+    technologies: ["WordPress", "Individuelles Theme", "PHP", "Responsive Design"],
     image: "/api/placeholder/600/400",
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://zeitgut-luzern.ch",
+    githubUrl: null,
     featured: true
   },
   {
     id: 2,
-    title: "Fitness Tracker App",
-    description: "Cross-Platform Mobile App für Fitness-Tracking",
-    category: "Flutter",
-    icon: Smartphone,
-    technologies: ["Flutter", "Firebase", "Dart", "Provider"],
+    title: "Fidutax",
+    description: "Professionelle Steuerberatungs-Website",
+    category: "WordPress", 
+    icon: Globe,
+    technologies: ["WordPress", "Individuelle Entwicklung", "PHP", "SEO"],
     image: "/api/placeholder/600/400",
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: "https://fidutax.ch",
+    githubUrl: null,
     featured: true
   },
   {
     id: 3,
-    title: "Restaurant Website",
-    description: "Responsive WordPress-Website mit Online-Reservierung",
-    category: "WordPress",
-    icon: Globe,
-    technologies: ["WordPress", "PHP", "MySQL", "Custom Theme"],
-    image: "/api/placeholder/600/400",
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false
-  },
-  {
-    id: 4,
-    title: "SaaS Dashboard",
-    description: "Analytics Dashboard mit Real-time Updates",
+    title: "POS & Buchhaltungssystem",
+    description: "Full-Stack Anwendung mit Echtzeit-Features",
     category: "Next.js",
     icon: Code,
-    technologies: ["Next.js", "Chart.js", "PostgreSQL", "Prisma"],
+    technologies: ["Next.js", "Supabase", "TypeScript", "Echtzeit"],
     image: "/api/placeholder/600/400",
-    liveUrl: "#",
-    githubUrl: "#",
+    liveUrl: null,
+    githubUrl: null,
     featured: true
-  },
-  {
-    id: 5,
-    title: "Travel Planning App",
-    description: "Mobile App für Reiseplanung mit Offline-Support",
-    category: "Flutter",
-    icon: Smartphone,
-    technologies: ["Flutter", "SQLite", "Google Maps", "Bloc"],
-    image: "/api/placeholder/600/400",
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false
-  },
-  {
-    id: 6,
-    title: "Corporate Website",
-    description: "Mehrsprachige Unternehmens-Website mit CMS",
-    category: "WordPress",
-    icon: Globe,
-    technologies: ["WordPress", "WPML", "ACF", "Responsive"],
-    image: "/api/placeholder/600/400",
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false
   }
 ]
 
@@ -91,18 +55,12 @@ export function Projects() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-            <Code className="w-4 h-4" />
-            Portfolio
-          </div>
-          
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
             Ausgewählte <span className="gradient-text">Projekte</span>
           </h2>
           
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ein Einblick in unsere Arbeit - von modernen Web-Apps bis hin zu 
-            mobilen Anwendungen und maßgeschneiderten CMS-Lösungen.
+          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+            Aktuelle Projekte, von individuellen WordPress Sites bis zu Full-Stack Anwendungen.
           </p>
         </motion.div>
 
@@ -124,26 +82,19 @@ export function Projects() {
                   </div>
                   
                   {/* Overlay on Hover */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                    <div className="flex gap-4">
+                  {project.liveUrl && (
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
                       <Button
                         size="sm"
                         variant="secondary"
                         className="bg-white/20 hover:bg-white/30 text-white border-white/30"
+                        onClick={() => window.open(project.liveUrl!, '_blank')}
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        Live Demo
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="secondary"
-                        className="bg-white/20 hover:bg-white/30 text-white border-white/30"
-                      >
-                        <Github className="w-4 h-4 mr-2" />
-                        Code
+                        Zur Website
                       </Button>
                     </div>
-                  </div>
+                  )}
                   
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4">
@@ -177,71 +128,26 @@ export function Projects() {
                     </div>
                     
                     {/* Links */}
-                    <div className="flex items-center justify-between pt-2">
-                      <div className="flex gap-3">
+                    {project.liveUrl && (
+                      <div className="flex justify-end pt-2">
                         <Button
                           size="sm"
                           variant="ghost"
-                          className="text-primary hover:text-primary hover:bg-primary/10 p-2"
+                          className="text-primary hover:text-primary hover:bg-primary/10 group/btn"
+                          onClick={() => window.open(project.liveUrl!, '_blank')}
                         >
-                          <ExternalLink className="w-4 h-4" />
-                        </Button>
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          className="text-primary hover:text-primary hover:bg-primary/10 p-2"
-                        >
-                          <Github className="w-4 h-4" />
+                          <ExternalLink className="w-4 h-4 mr-1" />
+                          Besuchen
+                          <ArrowRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
                         </Button>
                       </div>
-                      
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="text-primary hover:text-primary hover:bg-primary/10 group/btn"
-                      >
-                        Details
-                        <ArrowRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
-                      </Button>
-                    </div>
+                    )}
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </div>
-        
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <div className="max-w-2xl mx-auto space-y-6">
-            <h3 className="text-2xl font-bold">
-              Lassen Sie uns Ihr Projekt verwirklichen
-            </h3>
-            
-            <p className="text-muted-foreground">
-              Jedes Projekt ist einzigartig. Wir entwickeln maßgeschneiderte Lösungen, 
-              die perfekt zu Ihren Anforderungen passen.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="gradient-bitcoin glow-hover">
-                Projekt besprechen
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-              
-              <Button size="lg" variant="outline" className="glow-border">
-                <Github className="w-5 h-5 mr-2" />
-                Alle Projekte ansehen
-              </Button>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   )
