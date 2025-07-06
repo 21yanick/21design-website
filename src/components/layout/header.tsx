@@ -7,8 +7,10 @@ import { Code } from 'lucide-react'
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center space-x-3">
+      <div className="container grid grid-cols-3 h-16 items-center">
+        <div></div>
+        
+        <div className="flex items-center space-x-3 justify-center">
           <motion.div
             className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20"
             whileHover={{ scale: 1.05, rotate: 5 }}
@@ -28,7 +30,7 @@ export function Header() {
           </motion.h1>
         </div>
         
-        <div className="flex items-center">
+        <div className="flex items-center justify-end">
           <ThemeToggle />
         </div>
       </div>
