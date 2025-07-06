@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Code, Monitor, Smartphone, Layers, Globe, Palette } from 'lucide-react'
+import { ArrowRight, Code, Monitor, Smartphone, Globe, Palette } from 'lucide-react'
 
 const services = [
   {

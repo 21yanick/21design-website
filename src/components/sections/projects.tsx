@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ExternalLink, Github, ArrowRight, Code, Smartphone, Globe } from 'lucide-react'
-import Image from 'next/image'
 
 const projects = [
   {

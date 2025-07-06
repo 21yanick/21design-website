@@ -169,9 +169,9 @@ export function About() {
               <CardContent className="p-8">
                 <Award className="w-8 h-8 text-primary mx-auto mb-4" />
                 <blockquote className="text-lg font-medium leading-relaxed">
-                  "Unser Ziel ist es, digitale Erlebnisse zu schaffen, die nicht nur 
+                  &quot;Unser Ziel ist es, digitale Erlebnisse zu schaffen, die nicht nur 
                   technisch exzellent sind, sondern auch echten Mehrwert für Menschen 
-                  und Unternehmen bieten."
+                  und Unternehmen bieten.&quot;
                 </blockquote>
                 <cite className="text-sm text-muted-foreground mt-4 block">
                   — Das 21design.ch Team

@@ -7,7 +7,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { Label } from '@/components/ui/label'
 import { 
   Form, 
   FormControl, 
@@ -277,10 +276,10 @@ export function Contact() {
                                   </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
-                                  <SelectItem value="5k-10k">CHF 5'000 - 10'000</SelectItem>
-                                  <SelectItem value="10k-25k">CHF 10'000 - 25'000</SelectItem>
-                                  <SelectItem value="25k-50k">CHF 25'000 - 50'000</SelectItem>
-                                  <SelectItem value="50k+">CHF 50'000+</SelectItem>
+                                  <SelectItem value="5k-10k">CHF 5&apos;000 - 10&apos;000</SelectItem>
+                                  <SelectItem value="10k-25k">CHF 10&apos;000 - 25&apos;000</SelectItem>
+                                  <SelectItem value="25k-50k">CHF 25&apos;000 - 50&apos;000</SelectItem>
+                                  <SelectItem value="50k+">CHF 50&apos;000+</SelectItem>
                                 </SelectContent>
                               </Select>
                               <FormMessage />
