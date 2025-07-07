@@ -155,7 +155,7 @@ export function Services() {
             </h3>
             
             <p className="text-muted-foreground">
-              Lassen Sie uns gemeinsam eine maßgeschneiderte Lösung für Ihre Anforderungen entwickeln.
+              Lass uns gemeinsam eine massgeschneiderte Lösung für deine Anforderungen entwickeln.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

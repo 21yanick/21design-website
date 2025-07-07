@@ -19,13 +19,13 @@ export function About() {
             </h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Ich bin ein Schweizer Entwickler, der sich auf moderne Webanwendungen spezialisiert hat. 
-              Ob individuelle WordPress Website, Full-Stack Next.js Anwendung oder etwas dazwischen — 
-              ich schätze den Prozess, Ideen in die Realität umzusetzen.
+              Ich bin Entwickler aus der Schweiz und verwirkliche digitale Ideen.
+              Ob mobile App, Webanwendung oder interne Software —
+              ich finde Lösungen, die wirklich funktionieren.
             </p>
             
             <p className="text-muted-foreground">
-              Sauberer Code, durchdachtes Design und zuverlässige Lösungen.
+              Pragmatisch, direkt und ohne unnötigen Schnickschnack.
             </p>
           </motion.div>
         </div>

@@ -25,11 +25,11 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
           >
-            <span className="text-foreground">Ich entwickle</span>
+            <span className="text-foreground">Ich bringe</span>
             <br />
-            <span className="gradient-text glow-text">moderne Web-</span>
+            <span className="gradient-text glow-text">deine Ideen</span>
             <br />
-            <span className="text-foreground">anwendungen</span>
+            <span className="text-foreground">digital zum Leben</span>
           </motion.h1>
           
           {/* Subtitle */}
