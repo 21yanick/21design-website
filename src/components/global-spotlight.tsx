@@ -12,7 +12,7 @@ export type GlobalSpotlightProps = {
 
 export function GlobalSpotlight({
   className,
-  size = 150,
+  size = 180,
   springOptions = { bounce: 0.3, duration: 0.1 },
 }: GlobalSpotlightProps) {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,37 +27,34 @@ export function GlobalSpotlight({
     (event: MouseEvent) => {
       mouseX.set(event.clientX);
       mouseY.set(event.clientY);
+      setIsVisible(true);
     },
     [mouseX, mouseY]
   );
 
-  const handleMouseEnter = useCallback(() => {
-    setIsVisible(true);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    setIsVisible(false);
-  }, []);
+  // Auto-hide timer
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => setIsVisible(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible]);
 
   useEffect(() => {
-    // Listen to mouse events on document body
+    // Listen to mouse events on document
     document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseenter', handleMouseEnter);
-    document.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseenter', handleMouseEnter);
-      document.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [handleMouseMove, handleMouseEnter, handleMouseLeave]);
+  }, [handleMouseMove]);
 
   return (
     <motion.div
       className={cn(
         'pointer-events-none fixed rounded-full z-[60]',
-        'bg-gradient-to-r from-orange-600/20 via-orange-400/15 to-yellow-400/10',
-        'transition-opacity duration-300 blur-3xl',
+        'bg-gradient-to-r from-orange-600/30 via-orange-400/25 to-yellow-400/15',
+        'transition-opacity duration-300 blur-2xl',
         isVisible ? 'opacity-100' : 'opacity-0',
         className
       )}
