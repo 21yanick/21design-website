@@ -16,7 +16,6 @@ export function GlobalSpotlight({
   springOptions = { bounce: 0.3, duration: 0.1 },
 }: GlobalSpotlightProps) {
   const [isVisible, setIsVisible] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
 
   const mouseX = useSpring(0, springOptions);
   const mouseY = useSpring(0, springOptions);
