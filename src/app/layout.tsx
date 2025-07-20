@@ -38,36 +38,33 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" suppressHydrationWarning>
-      <head>
+      <head />
+      <body
+        className={`${inter.variable} font-sans antialiased`}
+        suppressHydrationWarning
+      >
+        {/* Blocking Script - Must be first in body for Next.js 15 */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
-                  var theme = localStorage.getItem('21design-theme') || 'system';
+                  var theme = localStorage.getItem('theme') || 'system';
                   if (theme === 'system') {
                     theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
                   }
                   if (theme === 'dark') {
                     document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
                   }
                 } catch (e) {}
               })();
             `,
           }}
         />
-      </head>
-      <body
-        className={`${inter.variable} font-sans antialiased`}
-      >
         <GlobalSpotlight />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange={false}
-          storageKey="21design-theme"
-        >
+        <ThemeProvider>
           {children}
           <Toaster 
             position="top-right"
