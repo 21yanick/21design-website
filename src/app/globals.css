@@ -280,11 +280,19 @@
   /* Neural Grid Background */
   .neural-grid {
     background-image: 
-      radial-gradient(circle at 50% 50%, var(--neural-node) 1px, transparent 1px),
-      linear-gradient(90deg, var(--neural-grid) 1px, transparent 1px),
-      linear-gradient(180deg, var(--neural-grid) 1px, transparent 1px);
+      radial-gradient(circle at 50% 50%, var(--neural-node, oklch(0.80 0.05 220)) 1px, transparent 1px),
+      linear-gradient(90deg, var(--neural-grid, oklch(0.90 0.02 220)) 1px, transparent 1px),
+      linear-gradient(180deg, var(--neural-grid, oklch(0.90 0.02 220)) 1px, transparent 1px);
     background-size: 80px 80px, 40px 40px, 40px 40px;
     animation: neural-grid-flow 30s linear infinite;
+  }
+  
+  /* Ensure proper theme-specific grid visibility */
+  .dark .neural-grid {
+    background-image: 
+      radial-gradient(circle at 50% 50%, var(--neural-node, oklch(0.75 0.18 45)) 1px, transparent 1px),
+      linear-gradient(90deg, var(--neural-grid, oklch(0.12 0.02 240)) 1px, transparent 1px),
+      linear-gradient(180deg, var(--neural-grid, oklch(0.12 0.02 240)) 1px, transparent 1px);
   }
   
   @keyframes neural-grid-flow {

@@ -28,7 +28,7 @@ export function NeuralHero() {
       </div>
       
       {/* Subtle Grid Overlay */}
-      <div className="absolute inset-0 neural-grid opacity-30" />
+      <div className="absolute inset-0 neural-grid opacity-30" suppressHydrationWarning />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
