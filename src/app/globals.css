@@ -123,43 +123,173 @@
   }
 }
 
-/* Glow Effects */
-@layer utilities {
-  .glow {
-    box-shadow: 0 0 20px rgba(255, 153, 0, 0.3);
+
+  /* Accordion Animations */
+  @keyframes accordion-down {
+    from { height: 0 }
+    to { height: var(--radix-accordion-content-height) }
   }
   
-  .glow-md {
-    box-shadow: 0 0 40px rgba(255, 153, 0, 0.4);
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height) }
+    to { height: 0 }
   }
   
-  .glow-lg {
-    box-shadow: 0 0 60px rgba(255, 153, 0, 0.5);
+  .animate-accordion-down {
+    animation: accordion-down 0.2s ease-out;
   }
   
-  .glow-text {
-    text-shadow: 0 0 10px rgba(255, 153, 0, 0.6);
+  .animate-accordion-up {
+    animation: accordion-up 0.2s ease-out;
   }
-  
-  .glow-border {
-    border: 1px solid rgba(255, 153, 0, 0.5);
-    box-shadow: 0 0 20px rgba(255, 153, 0, 0.2);
-  }
-  
-  .glow-hover:hover {
-    box-shadow: 0 0 30px rgba(255, 153, 0, 0.6);
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .gradient-bitcoin {
-    background: linear-gradient(135deg, #FF9900 0%, #FFCC00 100%);
-  }
-  
-  .gradient-text {
-    background: linear-gradient(135deg, #FF9900 0%, #FFCC00 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
+
+/* ========================================
+   NEURAL THEME SYSTEM
+   ======================================== */
+
+:root {
+  /* Neural Light Mode - Clean Professional */
+  --neural-primary: oklch(0.20 0.10 240);      /* Deep Navy - Higher contrast */
+  --neural-accent: oklch(0.55 0.18 220);       /* Strong Blue - More saturated */
+  --neural-surface: oklch(0.99 0.005 60);      /* Pure White */
+  --neural-glow: oklch(0.55 0.18 220 / 0.15);  /* Stronger Blue Glow */
+  --neural-node: oklch(0.80 0.05 220);         /* Light Blue Node */
+  --neural-connection: oklch(0.70 0.08 220);   /* Blue Connection */
+  --neural-grid: oklch(0.90 0.02 220);         /* Light Grid */
 }
+
+.dark {
+  /* Neural Dark Mode - Tech Sophistication */
+  --neural-primary: oklch(0.90 0.02 200);      /* Bright White - High contrast */
+  --neural-accent: oklch(0.80 0.18 45);        /* Bright Gold - More saturated */
+  --neural-surface: oklch(0.06 0.01 240);      /* Very Deep Tech */
+  --neural-glow: oklch(0.80 0.18 45 / 0.25);   /* Strong Golden Glow */
+  --neural-node: oklch(0.75 0.18 45);          /* Golden Node */
+  --neural-connection: oklch(0.60 0.15 45);    /* Golden Connection */
+  --neural-grid: oklch(0.12 0.02 240);         /* Dark Grid */
+}
+
+@layer utilities {
+  /* Neural Network Utilities */
+  .neural-glow {
+    box-shadow: 0 0 20px var(--neural-glow);
+  }
+  
+  .neural-glow-strong {
+    box-shadow: 0 0 40px var(--neural-glow), 0 0 60px var(--neural-glow);
+  }
+  
+  .neural-surface {
+    background: var(--neural-surface);
+  }
+  
+  .neural-border {
+    border-color: var(--neural-connection);
+  }
+  
+  .neural-text {
+    color: var(--neural-primary);
+  }
+  
+  .neural-accent {
+    color: var(--neural-accent);
+  }
+  
+  /* Sophisticated Button Hierarchy System */
+  
+  /* PRIMARY - Dominant Call-to-Action */
+  .neural-button-primary {
+    background: var(--neural-accent) !important;
+    color: var(--neural-surface) !important;
+    border: 1px solid var(--neural-accent) !important;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .neural-button-primary:hover {
+    background: var(--neural-accent) !important;
+    color: var(--neural-surface) !important;
+    opacity: 0.9;
+    transform: scale(1.02);
+    box-shadow: 0 0 30px var(--neural-glow);
+  }
+  
+  /* SECONDARY - Subtle & Elegant */
+  .neural-button-secondary {
+    background: rgba(255, 255, 255, 0.03) !important;
+    color: var(--neural-primary) !important;
+    border: 1px solid var(--neural-connection) !important;
+    backdrop-filter: blur(12px);
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .neural-button-secondary:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: var(--neural-accent) !important;
+    border-color: var(--neural-accent) !important;
+    transform: translateY(-2px);
+    box-shadow: 
+      0 0 25px var(--neural-glow),
+      0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Dark mode adjustments for secondary */
+  .dark .neural-button-secondary {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--neural-primary) !important;
+  }
+  
+  .dark .neural-button-secondary:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: var(--neural-accent) !important;
+  }
+  
+  /* TERTIARY - Ultra-subtle for nav and small actions */
+  .neural-button-tertiary {
+    background: transparent !important;
+    color: var(--neural-primary) !important;
+    border: 1px solid transparent !important;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .neural-button-tertiary:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--neural-accent) !important;
+    border-color: var(--neural-connection) !important;
+    transform: translateX(3px);
+  }
+  
+  .dark .neural-button-tertiary:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+  
+  /* Kinetic Typography */
+  .kinetic-text {
+    transform-origin: left center;
+    animation: neural-drift 20s ease-in-out infinite;
+  }
+  
+  @keyframes neural-drift {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(10px) rotate(0.5deg); }
+    75% { transform: translateX(-5px) rotate(-0.3deg); }
+  }
+  
+  /* Neural Grid Background */
+  .neural-grid {
+    background-image: 
+      radial-gradient(circle at 50% 50%, var(--neural-node) 1px, transparent 1px),
+      linear-gradient(90deg, var(--neural-grid) 1px, transparent 1px),
+      linear-gradient(180deg, var(--neural-grid) 1px, transparent 1px);
+    background-size: 80px 80px, 40px 40px, 40px 40px;
+    animation: neural-grid-flow 30s linear infinite;
+  }
+  
+  @keyframes neural-grid-flow {
+    0% { background-position: 0 0, 0 0, 0 0; }
+    100% { background-position: 80px 80px, 40px 40px, 40px 40px; }
+  }
+}
+

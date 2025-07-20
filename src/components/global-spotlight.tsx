@@ -54,7 +54,10 @@ export function GlobalSpotlight({
     <motion.div
       className={cn(
         'pointer-events-none fixed rounded-full z-[60]',
-        'bg-gradient-to-r from-orange-600/30 via-orange-400/25 to-yellow-400/15',
+        // Neural theme-aware gradient
+        'bg-gradient-to-r',
+        'dark:from-amber-400/25 dark:via-orange-300/20 dark:to-yellow-200/15', // Dark mode - warm gold
+        'from-blue-400/20 via-blue-300/15 to-cyan-200/10', // Light mode - calm blue
         'transition-opacity duration-300 blur-2xl',
         isVisible ? 'opacity-100' : 'opacity-0',
         className
