@@ -277,22 +277,39 @@
     75% { transform: translateX(-5px) rotate(-0.3deg); }
   }
   
-  /* Neural Grid Background */
+  /* Neural Grid Background - Light Mode First (Production Safe) */
   .neural-grid {
+    /* Light mode defaults for production builds */
     background-image: 
-      radial-gradient(circle at 50% 50%, var(--neural-node, oklch(0.80 0.05 220)) 1px, transparent 1px),
-      linear-gradient(90deg, var(--neural-grid, oklch(0.90 0.02 220)) 1px, transparent 1px),
-      linear-gradient(180deg, var(--neural-grid, oklch(0.90 0.02 220)) 1px, transparent 1px);
+      radial-gradient(circle at 50% 50%, oklch(0.80 0.05 220) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.90 0.02 220) 1px, transparent 1px),
+      linear-gradient(180deg, oklch(0.90 0.02 220) 1px, transparent 1px);
     background-size: 80px 80px, 40px 40px, 40px 40px;
     animation: neural-grid-flow 30s linear infinite;
   }
   
-  /* Ensure proper theme-specific grid visibility */
+  /* Custom properties override when available */
+  :root .neural-grid {
+    background-image: 
+      radial-gradient(circle at 50% 50%, var(--neural-node) 1px, transparent 1px),
+      linear-gradient(90deg, var(--neural-grid) 1px, transparent 1px),
+      linear-gradient(180deg, var(--neural-grid) 1px, transparent 1px);
+  }
+  
+  /* Dark mode overrides */
   .dark .neural-grid {
     background-image: 
-      radial-gradient(circle at 50% 50%, var(--neural-node, oklch(0.75 0.18 45)) 1px, transparent 1px),
-      linear-gradient(90deg, var(--neural-grid, oklch(0.12 0.02 240)) 1px, transparent 1px),
-      linear-gradient(180deg, var(--neural-grid, oklch(0.12 0.02 240)) 1px, transparent 1px);
+      radial-gradient(circle at 50% 50%, oklch(0.75 0.18 45) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.12 0.02 240) 1px, transparent 1px),
+      linear-gradient(180deg, oklch(0.12 0.02 240) 1px, transparent 1px);
+  }
+  
+  /* Dark mode with custom properties */
+  .dark:root .neural-grid {
+    background-image: 
+      radial-gradient(circle at 50% 50%, var(--neural-node) 1px, transparent 1px),
+      linear-gradient(90deg, var(--neural-grid) 1px, transparent 1px),
+      linear-gradient(180deg, var(--neural-grid) 1px, transparent 1px);
   }
   
   @keyframes neural-grid-flow {
