@@ -277,39 +277,23 @@
     75% { transform: translateX(-5px) rotate(-0.3deg); }
   }
   
-  /* Neural Grid Background - Light Mode First (Production Safe) */
+  /* Neural Grid Background - Production Safe with Opacity Control */
   .neural-grid {
-    /* Light mode defaults for production builds */
+    /* Base neutral grid that works in both themes */
     background-image: 
-      radial-gradient(circle at 50% 50%, oklch(0.80 0.05 220) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(0.90 0.02 220) 1px, transparent 1px),
-      linear-gradient(180deg, oklch(0.90 0.02 220) 1px, transparent 1px);
+      radial-gradient(circle at 50% 50%, oklch(0.5 0.1 220) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.5 0.1 220) 1px, transparent 1px),
+      linear-gradient(180deg, oklch(0.5 0.1 220) 1px, transparent 1px);
     background-size: 80px 80px, 40px 40px, 40px 40px;
     animation: neural-grid-flow 30s linear infinite;
+    
+    /* Light mode: very subtle (Production Safe) */
+    opacity: 0.08;
   }
   
-  /* Custom properties override when available */
-  :root .neural-grid {
-    background-image: 
-      radial-gradient(circle at 50% 50%, var(--neural-node) 1px, transparent 1px),
-      linear-gradient(90deg, var(--neural-grid) 1px, transparent 1px),
-      linear-gradient(180deg, var(--neural-grid) 1px, transparent 1px);
-  }
-  
-  /* Dark mode overrides */
+  /* Dark mode: more visible */
   .dark .neural-grid {
-    background-image: 
-      radial-gradient(circle at 50% 50%, oklch(0.75 0.18 45) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(0.12 0.02 240) 1px, transparent 1px),
-      linear-gradient(180deg, oklch(0.12 0.02 240) 1px, transparent 1px);
-  }
-  
-  /* Dark mode with custom properties */
-  .dark:root .neural-grid {
-    background-image: 
-      radial-gradient(circle at 50% 50%, var(--neural-node) 1px, transparent 1px),
-      linear-gradient(90deg, var(--neural-grid) 1px, transparent 1px),
-      linear-gradient(180deg, var(--neural-grid) 1px, transparent 1px);
+    opacity: 0.3;
   }
   
   @keyframes neural-grid-flow {

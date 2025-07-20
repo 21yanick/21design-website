@@ -81,7 +81,7 @@ export function NeuralProjects() {
   return (
     <section className="relative py-32 neural-surface border-t neural-border">
       {/* Background */}
-      <div className="absolute inset-0 neural-grid opacity-20" suppressHydrationWarning />
+      <div className="absolute inset-0 neural-grid" suppressHydrationWarning />
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
