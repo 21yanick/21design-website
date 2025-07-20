@@ -3,6 +3,7 @@
 import { motion } from 'motion/react'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
+import { useTilt } from '@/hooks/use-tilt'
 import { 
   User, 
   Coffee, 
@@ -23,21 +24,34 @@ const skills = [
   { name: 'Performance', level: 88, category: 'Optimization' }
 ]
 
-const values = [
-  {
-    icon: Rocket,
-    title: 'Innovation',
-    description: 'Moderne Technologien mit bewährten Lösungen kombinieren'
-  },
-  {
-    icon: CheckCircle,
-    title: 'Zuverlässigkeit',
-    description: 'Termine einhalten, Versprechen erfüllen, langfristig denken'
-  }
-]
 
 
 export function About() {
+  // 3D Tilt effects for the 4 main cards - optimized for smooth first transition
+  const personalCardTilt = useTilt({ 
+    maxTilt: 8, 
+    scale: 1.02, 
+    speed: 400, 
+    warmupDuration: 120 
+  })
+  const skillsCardTilt = useTilt({ 
+    maxTilt: 8, 
+    scale: 1.02, 
+    speed: 400, 
+    warmupDuration: 120 
+  })
+  const innovationCardTilt = useTilt({ 
+    maxTilt: 10, 
+    scale: 1.03, 
+    speed: 350, 
+    warmupDuration: 100 
+  })
+  const reliabilityCardTilt = useTilt({ 
+    maxTilt: 10, 
+    scale: 1.03, 
+    speed: 350, 
+    warmupDuration: 100 
+  })
   return (
     <section className="relative py-32 surface border-t border-theme">
       {/* Background */}
@@ -78,7 +92,13 @@ export function About() {
             className="lg:col-span-7 space-y-8"
           >
             {/* Personal Context */}
-            <Card className="bg-background/60 backdrop-blur-sm border-theme glow">
+            <Card 
+              ref={personalCardTilt.ref}
+              onMouseMove={personalCardTilt.onMouseMove}
+              onMouseEnter={personalCardTilt.onMouseEnter}
+              onMouseLeave={personalCardTilt.onMouseLeave}
+              className="bg-background/60 backdrop-blur-sm border-theme glow cursor-pointer"
+            >
               <CardContent className="p-6">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-theme flex items-center justify-center">
@@ -124,31 +144,63 @@ export function About() {
               </CardContent>
             </Card>
 
-            {/* Values Grid - Simplified to 2 */}
+            {/* Values Grid - Individual Cards with 3D Tilt */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {values.map((value, index) => (
-                <motion.div
-                  key={value.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
+              {/* Innovation Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0 }}
+                viewport={{ once: true }}
+              >
+                <Card 
+                  ref={innovationCardTilt.ref}
+                  onMouseMove={innovationCardTilt.onMouseMove}
+                  onMouseEnter={innovationCardTilt.onMouseEnter}
+                  onMouseLeave={innovationCardTilt.onMouseLeave}
+                  className="h-full bg-background/40 backdrop-blur-sm border-theme hover:glow transition-all duration-300 cursor-pointer"
                 >
-                  <Card className="h-full bg-background/40 backdrop-blur-sm border-theme hover:glow transition-all duration-300">
-                    <CardContent className="p-4">
-                      <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-theme flex items-center justify-center flex-shrink-0">
-                          <value.icon className="w-4 h-4 text-accent" />
-                        </div>
-                        <div>
-                          <h4 className="font-medium text-primary mb-1">{value.title}</h4>
-                          <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
-                        </div>
+                  <CardContent className="p-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-theme flex items-center justify-center flex-shrink-0">
+                        <Rocket className="w-4 h-4 text-accent" />
                       </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+                      <div>
+                        <h4 className="font-medium text-primary mb-1">Innovation</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">Moderne Technologien mit bewährten Lösungen kombinieren</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+              
+              {/* Zuverlässigkeit Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card 
+                  ref={reliabilityCardTilt.ref}
+                  onMouseMove={reliabilityCardTilt.onMouseMove}
+                  onMouseEnter={reliabilityCardTilt.onMouseEnter}
+                  onMouseLeave={reliabilityCardTilt.onMouseLeave}
+                  className="h-full bg-background/40 backdrop-blur-sm border-theme hover:glow transition-all duration-300 cursor-pointer"
+                >
+                  <CardContent className="p-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-theme flex items-center justify-center flex-shrink-0">
+                        <CheckCircle className="w-4 h-4 text-accent" />
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-primary mb-1">Zuverlässigkeit</h4>
+                        <p className="text-sm text-muted-foreground leading-relaxed">Termine einhalten, Versprechen erfüllen, langfristig denken</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </div>
           </motion.div>
 
@@ -160,8 +212,14 @@ export function About() {
             viewport={{ once: true }}
             className="lg:col-span-5 space-y-8"
           >
-            {/* Skills Radar */}
-            <Card className="bg-background/60 backdrop-blur-sm border-theme glow">
+            {/* Skills & Expertise */}
+            <Card 
+              ref={skillsCardTilt.ref}
+              onMouseMove={skillsCardTilt.onMouseMove}
+              onMouseEnter={skillsCardTilt.onMouseEnter}
+              onMouseLeave={skillsCardTilt.onMouseLeave}
+              className="bg-background/60 backdrop-blur-sm border-theme glow cursor-pointer"
+            >
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold mb-6 text-primary">Skills & Expertise</h3>
                 

@@ -4,6 +4,7 @@ import { motion } from 'motion/react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ContactModal } from '@/components/contact/contact-modal'
+import { useTilt } from '@/hooks/use-tilt'
 import { 
   Mail, 
   MessageCircle, 
@@ -13,6 +14,13 @@ import {
 } from 'lucide-react'
 
 export function Contact() {
+  // 3D Tilt effect for the main CTA card - extra impact for conversion
+  const ctaCardTilt = useTilt({ 
+    maxTilt: 12,     // Stronger tilt for more attention
+    scale: 1.04,     // More scale for CTA prominence
+    speed: 400,      // Smoother return
+    warmupDuration: 180 // Longer warmup for smoother first transition
+  })
   return (
     <section className="relative py-32 surface border-t border-theme">
       {/* Background */}
@@ -50,7 +58,13 @@ export function Contact() {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto"
         >
-          <Card className="bg-background/60 backdrop-blur-sm border-theme glow-strong overflow-hidden">
+          <Card 
+            ref={ctaCardTilt.ref}
+            onMouseMove={ctaCardTilt.onMouseMove}
+            onMouseEnter={ctaCardTilt.onMouseEnter}
+            onMouseLeave={ctaCardTilt.onMouseLeave}
+            className="bg-background/60 backdrop-blur-sm border-theme glow-strong overflow-hidden cursor-pointer"
+          >
             <CardContent className="p-12 text-center">
               
               {/* Icon */}
