@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'motion/react'
+import { useTheme } from 'next-themes'
 
 interface Node {
   id: number
@@ -12,16 +13,23 @@ interface Node {
   connections: number[]
 }
 
-interface NeuralNetworkProps {
+interface AnimatedBackgroundProps {
   nodeCount?: number
   className?: string
 }
 
-export function NeuralNetwork({ nodeCount = 12, className = '' }: NeuralNetworkProps) {
+export function AnimatedBackground({ nodeCount = 12, className = '' }: AnimatedBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
   const [nodes, setNodes] = useState<Node[]>([])
+  const [mounted, setMounted] = useState(false)
   const mousePos = useRef({ x: 0, y: 0 })
+  const { resolvedTheme } = useTheme()
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Initialize nodes
   useEffect(() => {
@@ -88,7 +96,7 @@ export function NeuralNetwork({ nodeCount = 12, className = '' }: NeuralNetworkP
 
   // Animation loop
   useEffect(() => {
-    if (!canvasRef.current || nodes.length === 0) return
+    if (!canvasRef.current || nodes.length === 0 || !mounted) return
 
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
@@ -102,8 +110,8 @@ export function NeuralNetwork({ nodeCount = 12, className = '' }: NeuralNetworkP
     const animate = () => {
       ctx.clearRect(0, 0, dimensions.width, dimensions.height)
 
-      // KISS Approach: Direct theme detection (no CSS Custom Properties)
-      const isDark = document.documentElement.classList.contains('dark')
+      // Use next-themes resolvedTheme (Production Safe)
+      const isDark = resolvedTheme === 'dark'
       const nodeColor = isDark ? 'oklch(0.75 0.18 45)' : 'oklch(0.80 0.05 220)'
       const connectionColor = isDark ? 'oklch(0.60 0.15 45)' : 'oklch(0.70 0.08 220)'
       const glowColor = isDark ? 'oklch(0.80 0.18 45 / 0.25)' : 'oklch(0.55 0.18 220 / 0.15)'
@@ -179,7 +187,7 @@ export function NeuralNetwork({ nodeCount = 12, className = '' }: NeuralNetworkP
     return () => {
       if (animationId) cancelAnimationFrame(animationId)
     }
-  }, [nodes, dimensions])
+  }, [nodes, dimensions, mounted, resolvedTheme])
 
   return (
     <motion.canvas

@@ -89,7 +89,7 @@ export function Toaster() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, x: 100, scale: 0.95 }}
             transition={{ duration: 0.3 }}
-            className="bg-background/95 backdrop-blur-sm border neural-border rounded-lg p-4 shadow-lg neural-glow min-w-[300px]"
+            className="bg-background/95 backdrop-blur-sm border border-theme rounded-lg p-4 shadow-lg glow min-w-[300px]"
           >
             <div className="flex items-start gap-3">
               <div className="flex-shrink-0 mt-0.5">
@@ -100,12 +100,12 @@ export function Toaster() {
                   <AlertCircle className="w-5 h-5 text-red-500" />
                 )}
                 {toast.type === 'loading' && (
-                  <Loader2 className="w-5 h-5 neural-accent animate-spin" />
+                  <Loader2 className="w-5 h-5 text-accent animate-spin" />
                 )}
               </div>
               
               <div className="flex-1 min-w-0">
-                <div className="text-sm font-medium neural-text">
+                <div className="text-sm font-medium text-primary">
                   {toast.title}
                 </div>
                 {toast.description && (

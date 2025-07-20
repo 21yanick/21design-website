@@ -107,13 +107,13 @@ export function ContactModal({ children }: ContactModalProps) {
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md bg-background/95 backdrop-blur-sm neural-border neural-glow">
+      <DialogContent className="sm:max-w-md bg-background/95 backdrop-blur-sm border-theme glow">
         <DialogHeader>
           <div className="flex items-center gap-2 mb-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 neural-border flex items-center justify-center">
-              <MessageCircle className="w-4 h-4 neural-accent" />
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-theme flex items-center justify-center">
+              <MessageCircle className="w-4 h-4 text-accent" />
             </div>
-            <DialogTitle className="neural-text text-xl">
+            <DialogTitle className="text-primary text-xl">
               Projekt besprechen
             </DialogTitle>
           </div>
@@ -130,11 +130,11 @@ export function ContactModal({ children }: ContactModalProps) {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="neural-text">Name</FormLabel>
+                  <FormLabel className="text-primary">Name</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Ihr Name"
-                      className="neural-border"
+                      className="border-theme"
                       {...field}
                     />
                   </FormControl>
@@ -149,12 +149,12 @@ export function ContactModal({ children }: ContactModalProps) {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="neural-text">E-Mail</FormLabel>
+                  <FormLabel className="text-primary">E-Mail</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
                       placeholder="ihre.email@beispiel.ch"
-                      className="neural-border"
+                      className="border-theme"
                       {...field}
                     />
                   </FormControl>
@@ -169,10 +169,10 @@ export function ContactModal({ children }: ContactModalProps) {
               name="subject"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="neural-text">Thema</FormLabel>
+                  <FormLabel className="text-primary">Thema</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger className="neural-border">
+                      <SelectTrigger className="border-theme">
                         <SelectValue placeholder="Worum geht es?" />
                       </SelectTrigger>
                     </FormControl>
@@ -195,11 +195,11 @@ export function ContactModal({ children }: ContactModalProps) {
               name="message"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="neural-text">Nachricht</FormLabel>
+                  <FormLabel className="text-primary">Nachricht</FormLabel>
                   <FormControl>
                     <Textarea
                       placeholder="Beschreiben Sie Ihr Projekt oder Ihre Anfrage..."
-                      className="min-h-24 neural-border"
+                      className="min-h-24 border-theme"
                       {...field}
                     />
                   </FormControl>
@@ -213,7 +213,7 @@ export function ContactModal({ children }: ContactModalProps) {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="neural-button-primary flex-1 neural-glow-strong group"
+                className="btn-primary flex-1 glow-strong group"
               >
                 {isSubmitting ? (
                   <>
@@ -231,7 +231,7 @@ export function ContactModal({ children }: ContactModalProps) {
                 type="button"
                 variant="outline"
                 onClick={() => setIsOpen(false)}
-                className="neural-button-tertiary"
+                className="btn-tertiary"
               >
                 Abbrechen
               </Button>

@@ -2,11 +2,11 @@
 
 import { motion } from 'motion/react'
 import { Button } from '@/components/ui/button'
-import { NeuralNetwork } from '@/components/ui/neural-network'
+import { AnimatedBackground } from '@/components/ui/animated-background'
 import { ContactModal } from '@/components/contact/contact-modal'
 import { ArrowRight, MessageCircle, Eye, MapPin, Clock } from 'lucide-react'
 
-export function NeuralHero() {
+export function Hero() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
@@ -21,14 +21,14 @@ export function NeuralHero() {
   })
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden neural-surface">
-      {/* Neural Network Background */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden surface">
+      {/* Network Background */}
       <div className="absolute inset-0">
-        <NeuralNetwork nodeCount={15} />
+        <AnimatedBackground nodeCount={15} />
       </div>
       
       {/* Subtle Grid Overlay */}
-      <div className="absolute inset-0 neural-grid" suppressHydrationWarning />
+      <div className="absolute inset-0 grid-pattern" suppressHydrationWarning />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
@@ -43,11 +43,11 @@ export function NeuralHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-background/80 backdrop-blur-sm border neural-border neural-glow text-sm font-medium"
+            className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-background/80 backdrop-blur-sm border border-theme glow text-sm font-medium"
           >
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <span className="neural-text">Verfügbar</span>
+              <span className="text-primary">Verfügbar</span>
             </div>
             <div className="w-px h-4 bg-border" />
             <div className="flex items-center gap-1 text-muted-foreground">
@@ -69,7 +69,7 @@ export function NeuralHero() {
           >
             <h1 className="text-4xl md:text-6xl lg:text-8xl font-light tracking-tight leading-[0.9]">
               <motion.span 
-                className="neural-text kinetic-text"
+                className="text-primary kinetic-text"
                 initial={{ x: -20 }}
                 animate={{ x: 0 }}
                 transition={{ duration: 1.5, delay: 0.6 }}
@@ -78,7 +78,7 @@ export function NeuralHero() {
               </motion.span>
               <br />
               <motion.span 
-                className="text-5xl md:text-7xl lg:text-9xl font-bold neural-accent neural-glow-strong"
+                className="text-5xl md:text-7xl lg:text-9xl font-bold text-accent glow-strong"
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 1.2, delay: 0.8 }}
@@ -87,7 +87,7 @@ export function NeuralHero() {
               </motion.span>
               <br />
               <motion.span 
-                className="neural-text kinetic-text"
+                className="text-primary kinetic-text"
                 initial={{ x: 20 }}
                 animate={{ x: 0 }}
                 transition={{ duration: 1.5, delay: 1 }}
@@ -105,9 +105,9 @@ export function NeuralHero() {
             className="space-y-6"
           >
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              <span className="font-medium neural-text">Full-Stack Development</span> mit modernen Technologien.
+              <span className="font-medium text-primary">Full-Stack Development</span> mit modernen Technologien.
               <br />
-              Von der Idee bis zur <span className="font-medium neural-text">produktiven Lösung</span>.
+              Von der Idee bis zur <span className="font-medium text-primary">produktiven Lösung</span>.
             </p>
             
             {/* Tech Stack Pills */}
@@ -118,7 +118,7 @@ export function NeuralHero() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 1.4 + index * 0.1 }}
-                  className="px-3 py-1 bg-background/60 backdrop-blur-sm border neural-border rounded-full neural-text font-medium"
+                  className="px-3 py-1 bg-background/60 backdrop-blur-sm border border-theme rounded-full text-primary font-medium"
                 >
                   {tech}
                 </motion.div>
@@ -136,7 +136,7 @@ export function NeuralHero() {
             <ContactModal>
               <Button
                 size="lg"
-                className="neural-button-primary neural-glow-strong text-lg px-8 py-6 group font-medium transition-all duration-300"
+                className="btn-primary glow-strong text-lg px-8 py-6 group font-medium transition-all duration-300"
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Projekt besprechen
@@ -146,7 +146,7 @@ export function NeuralHero() {
             
             <Button
               size="lg"
-              className="neural-button-secondary text-lg px-8 py-6 group transition-all duration-300"
+              className="btn-secondary text-lg px-8 py-6 group transition-all duration-300"
               onClick={() => scrollToSection('projects')}
             >
               <Eye className="w-5 h-5 mr-2" />
@@ -173,7 +173,7 @@ export function NeuralHero() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 2 + index * 0.1 }}
                 onClick={() => scrollToSection(link.section)}
-                className="hover:neural-accent transition-colors duration-300 hover:underline underline-offset-4"
+                className="hover:text-accent transition-colors duration-300 hover:underline underline-offset-4"
               >
                 {link.label}
               </motion.button>
@@ -191,12 +191,12 @@ export function NeuralHero() {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-6 h-10 border-2 neural-border rounded-full flex justify-center backdrop-blur-sm bg-background/20"
+            className="w-6 h-10 border-2 border-theme rounded-full flex justify-center backdrop-blur-sm bg-background/20"
           >
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-1 h-3 neural-accent bg-current rounded-full mt-2"
+              className="w-1 h-3 text-accent bg-current rounded-full mt-2"
             />
           </motion.div>
         </motion.div>

@@ -1,28 +1,20 @@
 'use client'
 
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
-import { useState, useEffect } from 'react'
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [mounted, setMounted] = useState(false)
+interface ThemeProviderProps {
+  children: React.ReactNode
+}
 
-  // Wait for hydration to complete (Next.js 15 fix)
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
+export function ThemeProvider({ children }: ThemeProviderProps) {
   return (
     <NextThemesProvider
       attribute="class"
       defaultTheme="system"
       enableSystem
-      disableTransitionOnChange={true} // Important for SSR stability
-      storageKey="theme" // Use default key for consistency
+      disableTransitionOnChange
     >
-      {/* Only render children after mount to prevent hydration mismatch */}
-      <div suppressHydrationWarning>
-        {mounted ? children : <div style={{ visibility: 'hidden' }}>{children}</div>}
-      </div>
+      {children}
     </NextThemesProvider>
   )
 }

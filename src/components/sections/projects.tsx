@@ -77,11 +77,11 @@ const projects = [
   }
 ]
 
-export function NeuralProjects() {
+export function Projects() {
   return (
-    <section className="relative py-32 neural-surface border-t neural-border">
+    <section className="relative py-32 surface border-t border-theme">
       {/* Background */}
-      <div className="absolute inset-0 neural-grid" suppressHydrationWarning />
+      <div className="absolute inset-0 grid-pattern" suppressHydrationWarning />
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
@@ -92,13 +92,13 @@ export function NeuralProjects() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background/80 backdrop-blur-sm border neural-border text-sm font-medium mb-6">
-            <Code className="w-4 h-4 neural-accent" />
-            <span className="neural-text">Arbeiten</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background/80 backdrop-blur-sm border border-theme text-sm font-medium mb-6">
+            <Code className="w-4 h-4 text-accent" />
+            <span className="text-primary">Arbeiten</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6 neural-text">
-            Ausgewählte <span className="font-bold neural-accent">Projekte</span>
+          <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-6 text-primary">
+            Ausgewählte <span className="font-bold text-accent">Projekte</span>
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -166,11 +166,11 @@ function ProjectCard({ project, size }: { project: typeof projects[0], size: 'la
   }[size]
 
   return (
-    <Card className={`${heightClass} group hover:scale-[1.02] transition-all duration-300 neural-border neural-glow cursor-pointer overflow-hidden bg-background/60 backdrop-blur-sm`}>
+    <Card className={`${heightClass} group hover:scale-[1.02] transition-all duration-300 border-theme glow cursor-pointer overflow-hidden bg-background/60 backdrop-blur-sm`}>
       {/* Project Visual */}
       <div className={`relative ${size === 'large' ? 'h-48' : size === 'medium' ? 'h-36' : 'h-32'} overflow-hidden bg-gradient-to-br ${project.color}`}>
         <div className="absolute inset-0 flex items-center justify-center">
-          <project.icon className={`${size === 'large' ? 'w-20 h-20' : 'w-16 h-16'} neural-accent opacity-40`} />
+          <project.icon className={`${size === 'large' ? 'w-20 h-20' : 'w-16 h-16'} text-accent opacity-40`} />
         </div>
         
         {/* Status Badge */}
@@ -185,7 +185,7 @@ function ProjectCard({ project, size }: { project: typeof projects[0], size: 'la
 
         {/* Category Badge */}
         <div className="absolute top-4 right-4">
-          <Badge variant="outline" className="neural-border bg-background/80 backdrop-blur-sm">
+          <Badge variant="outline" className="border-theme bg-background/80 backdrop-blur-sm">
             {project.category}
           </Badge>
         </div>
@@ -213,7 +213,7 @@ function ProjectCard({ project, size }: { project: typeof projects[0], size: 'la
         <div className="space-y-4">
           {/* Title & Description */}
           <div>
-            <h3 className={`${size === 'large' ? 'text-2xl' : 'text-xl'} font-semibold group-hover:neural-accent transition-colors neural-text`}>
+            <h3 className={`${size === 'large' ? 'text-2xl' : 'text-xl'} font-semibold group-hover:text-accent transition-colors text-primary`}>
               {project.title}
             </h3>
             <p className="text-muted-foreground text-sm mt-2 leading-relaxed">
@@ -224,9 +224,9 @@ function ProjectCard({ project, size }: { project: typeof projects[0], size: 'la
           {/* Metrics */}
           <div className="flex flex-wrap gap-2 text-xs">
             {Object.entries(project.metrics).map(([key, value]) => (
-              <div key={key} className="flex items-center gap-1 px-2 py-1 bg-background/80 rounded neural-border">
-                <span className="neural-accent font-medium">{key}:</span>
-                <span className="neural-text">{value}</span>
+              <div key={key} className="flex items-center gap-1 px-2 py-1 bg-background/80 rounded border-theme">
+                <span className="text-accent font-medium">{key}:</span>
+                <span className="text-primary">{value}</span>
               </div>
             ))}
           </div>
@@ -235,7 +235,7 @@ function ProjectCard({ project, size }: { project: typeof projects[0], size: 'la
           {size !== 'small' && (
             <div className="flex flex-wrap gap-2">
               {project.technologies.slice(0, size === 'large' ? 4 : 3).map((tech) => (
-                <Badge key={tech} variant="secondary" className="text-xs bg-background/60 neural-border">
+                <Badge key={tech} variant="secondary" className="text-xs bg-background/60 border-theme">
                   {tech}
                 </Badge>
               ))}
@@ -247,7 +247,7 @@ function ProjectCard({ project, size }: { project: typeof projects[0], size: 'la
             <div className="flex justify-end pt-2">
               <Button
                 size="sm"
-                className="neural-button-tertiary group/btn"
+                className="btn-tertiary group/btn"
                 onClick={(e) => {
                   e.stopPropagation()
                   window.open(project.liveUrl!, '_blank')

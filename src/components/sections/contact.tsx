@@ -12,11 +12,11 @@ import {
   Zap
 } from 'lucide-react'
 
-export function NeuralContact() {
+export function Contact() {
   return (
-    <section className="relative py-32 neural-surface border-t neural-border">
+    <section className="relative py-32 surface border-t border-theme">
       {/* Background */}
-      <div className="absolute inset-0 neural-grid" suppressHydrationWarning />
+      <div className="absolute inset-0 grid-pattern" suppressHydrationWarning />
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
@@ -27,18 +27,18 @@ export function NeuralContact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background/80 backdrop-blur-sm border neural-border text-sm font-medium mb-6">
-            <MessageCircle className="w-4 h-4 neural-accent" />
-            <span className="neural-text">Kontakt</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background/80 backdrop-blur-sm border border-theme text-sm font-medium mb-6">
+            <MessageCircle className="w-4 h-4 text-accent" />
+            <span className="text-primary">Kontakt</span>
           </div>
           
-          <h2 className="text-4xl md:text-6xl font-light tracking-tight mb-6 neural-text">
-            Bereit für Ihr <span className="font-bold neural-accent">Projekt</span>?
+          <h2 className="text-4xl md:text-6xl font-light tracking-tight mb-6 text-primary">
+            Bereit für Ihr <span className="font-bold text-accent">Projekt</span>?
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Von der ersten Idee bis zum Live-Launch – lassen Sie uns gemeinsam 
-            <span className="font-medium neural-text"> etwas Großartiges erschaffen.</span>
+            <span className="font-medium text-primary"> etwas Großartiges erschaffen.</span>
           </p>
         </motion.div>
 
@@ -50,16 +50,16 @@ export function NeuralContact() {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto"
         >
-          <Card className="bg-background/60 backdrop-blur-sm neural-border neural-glow-strong overflow-hidden">
+          <Card className="bg-background/60 backdrop-blur-sm border-theme glow-strong overflow-hidden">
             <CardContent className="p-12 text-center">
               
               {/* Icon */}
-              <div className="w-20 h-20 mx-auto mb-8 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 neural-border flex items-center justify-center neural-glow">
-                <Zap className="w-10 h-10 neural-accent" />
+              <div className="w-20 h-20 mx-auto mb-8 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 border-theme flex items-center justify-center glow">
+                <Zap className="w-10 h-10 text-accent" />
               </div>
               
               {/* Content */}
-              <h3 className="text-3xl md:text-4xl font-semibold mb-6 neural-text">
+              <h3 className="text-3xl md:text-4xl font-semibold mb-6 text-primary">
                 Projekt starten
               </h3>
               
@@ -71,7 +71,7 @@ export function NeuralContact() {
               <ContactModal>
                 <Button 
                   size="lg" 
-                  className="neural-button-primary neural-glow-strong text-xl px-12 py-6 group font-medium transition-all duration-300 mb-6"
+                  className="btn-primary glow-strong text-xl px-12 py-6 group font-medium transition-all duration-300 mb-6"
                 >
                   <MessageCircle className="w-6 h-6 mr-3" />
                   Jetzt Projekt besprechen
@@ -86,7 +86,7 @@ export function NeuralContact() {
                   <span>Antwort in 24h</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 neural-accent" />
+                  <Mail className="w-4 h-4 text-accent" />
                   <span>hello@21design.ch</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -111,7 +111,7 @@ export function NeuralContact() {
             Bevorzugen Sie E-Mail? Schreiben Sie direkt an{' '}
             <a 
               href="mailto:hello@21design.ch?subject=Projekt anfragen" 
-              className="neural-accent hover:underline font-medium transition-colors"
+              className="text-accent hover:underline font-medium transition-colors"
             >
               hello@21design.ch
             </a>
