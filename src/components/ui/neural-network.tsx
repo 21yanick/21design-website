@@ -102,11 +102,11 @@ export function NeuralNetwork({ nodeCount = 12, className = '' }: NeuralNetworkP
     const animate = () => {
       ctx.clearRect(0, 0, dimensions.width, dimensions.height)
 
-      // Get CSS variables for theme-aware colors
-      const style = getComputedStyle(document.documentElement)
-      const nodeColor = style.getPropertyValue('--neural-node').trim()
-      const connectionColor = style.getPropertyValue('--neural-connection').trim()
-      const glowColor = style.getPropertyValue('--neural-glow').trim()
+      // KISS Approach: Direct theme detection (no CSS Custom Properties)
+      const isDark = document.documentElement.classList.contains('dark')
+      const nodeColor = isDark ? 'oklch(0.75 0.18 45)' : 'oklch(0.80 0.05 220)'
+      const connectionColor = isDark ? 'oklch(0.60 0.15 45)' : 'oklch(0.70 0.08 220)'
+      const glowColor = isDark ? 'oklch(0.80 0.18 45 / 0.25)' : 'oklch(0.55 0.18 220 / 0.15)'
 
       // Update and draw nodes
       nodes.forEach(node => {

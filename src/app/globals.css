@@ -147,122 +147,139 @@
    NEURAL THEME SYSTEM
    ======================================== */
 
-:root {
-  /* Neural Light Mode - Clean Professional */
-  --neural-primary: oklch(0.20 0.10 240);      /* Deep Navy - Higher contrast */
-  --neural-accent: oklch(0.55 0.18 220);       /* Strong Blue - More saturated */
-  --neural-surface: oklch(0.99 0.005 60);      /* Pure White */
-  --neural-glow: oklch(0.55 0.18 220 / 0.15);  /* Stronger Blue Glow */
-  --neural-node: oklch(0.80 0.05 220);         /* Light Blue Node */
-  --neural-connection: oklch(0.70 0.08 220);   /* Blue Connection */
-  --neural-grid: oklch(0.90 0.02 220);         /* Light Grid */
-}
-
-.dark {
-  /* Neural Dark Mode - Tech Sophistication */
-  --neural-primary: oklch(0.90 0.02 200);      /* Bright White - High contrast */
-  --neural-accent: oklch(0.80 0.18 45);        /* Bright Gold - More saturated */
-  --neural-surface: oklch(0.06 0.01 240);      /* Very Deep Tech */
-  --neural-glow: oklch(0.80 0.18 45 / 0.25);   /* Strong Golden Glow */
-  --neural-node: oklch(0.75 0.18 45);          /* Golden Node */
-  --neural-connection: oklch(0.60 0.15 45);    /* Golden Connection */
-  --neural-grid: oklch(0.12 0.02 240);         /* Dark Grid */
-}
+/* Neural Theme - KISS Approach: Hardcoded Values (Production Safe) */
 
 @layer utilities {
-  /* Neural Network Utilities */
-  .neural-glow {
-    box-shadow: 0 0 20px var(--neural-glow);
-  }
-  
-  .neural-glow-strong {
-    box-shadow: 0 0 40px var(--neural-glow), 0 0 60px var(--neural-glow);
-  }
-  
-  .neural-surface {
-    background: var(--neural-surface);
-  }
-  
-  .neural-border {
-    border-color: var(--neural-connection);
-  }
-  
+  /* Neural Text Colors - KISS Approach */
   .neural-text {
-    color: var(--neural-primary);
+    color: oklch(0.20 0.10 240); /* Light Mode: Deep Navy */
+  }
+  .dark .neural-text {
+    color: oklch(0.90 0.02 200); /* Dark Mode: Bright White */
   }
   
   .neural-accent {
-    color: var(--neural-accent);
+    color: oklch(0.55 0.18 220); /* Light Mode: Strong Blue */
+  }
+  .dark .neural-accent {
+    color: oklch(0.80 0.18 45); /* Dark Mode: Bright Gold */
   }
   
-  /* Sophisticated Button Hierarchy System */
+  /* Neural Surfaces */
+  .neural-surface {
+    background: oklch(0.99 0.005 60); /* Light Mode: Pure White */
+  }
+  .dark .neural-surface {
+    background: oklch(0.06 0.01 240); /* Dark Mode: Very Deep Tech */
+  }
+  
+  /* Neural Borders */
+  .neural-border {
+    border-color: oklch(0.70 0.08 220); /* Light Mode: Blue Connection */
+  }
+  .dark .neural-border {
+    border-color: oklch(0.60 0.15 45); /* Dark Mode: Golden Connection */
+  }
+  
+  /* Neural Glow Effects */
+  .neural-glow {
+    box-shadow: 0 0 20px oklch(0.55 0.18 220 / 0.15); /* Light Mode: Blue Glow */
+  }
+  .dark .neural-glow {
+    box-shadow: 0 0 20px oklch(0.80 0.18 45 / 0.25); /* Dark Mode: Golden Glow */
+  }
+  
+  .neural-glow-strong {
+    box-shadow: 
+      0 0 40px oklch(0.55 0.18 220 / 0.15), 
+      0 0 60px oklch(0.55 0.18 220 / 0.15); /* Light Mode: Strong Blue Glow */
+  }
+  .dark .neural-glow-strong {
+    box-shadow: 
+      0 0 40px oklch(0.80 0.18 45 / 0.25), 
+      0 0 60px oklch(0.80 0.18 45 / 0.25); /* Dark Mode: Strong Golden Glow */
+  }
+  
+  /* Neural Button Hierarchy - KISS Approach */
   
   /* PRIMARY - Dominant Call-to-Action */
   .neural-button-primary {
-    background: var(--neural-accent) !important;
-    color: var(--neural-surface) !important;
-    border: 1px solid var(--neural-accent) !important;
+    background: oklch(0.55 0.18 220) !important; /* Light Mode: Strong Blue */
+    color: oklch(0.99 0.005 60) !important; /* Light Mode: Pure White */
+    border: 1px solid oklch(0.55 0.18 220) !important;
     font-weight: 600;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
+  .dark .neural-button-primary {
+    background: oklch(0.80 0.18 45) !important; /* Dark Mode: Bright Gold */
+    color: oklch(0.06 0.01 240) !important; /* Dark Mode: Very Deep Tech */
+    border: 1px solid oklch(0.80 0.18 45) !important;
+  }
   
   .neural-button-primary:hover {
-    background: var(--neural-accent) !important;
-    color: var(--neural-surface) !important;
     opacity: 0.9;
     transform: scale(1.02);
-    box-shadow: 0 0 30px var(--neural-glow);
+    box-shadow: 0 0 30px oklch(0.55 0.18 220 / 0.15); /* Light Mode: Blue Glow */
+  }
+  .dark .neural-button-primary:hover {
+    box-shadow: 0 0 30px oklch(0.80 0.18 45 / 0.25); /* Dark Mode: Golden Glow */
   }
   
   /* SECONDARY - Subtle & Elegant */
   .neural-button-secondary {
     background: rgba(255, 255, 255, 0.03) !important;
-    color: var(--neural-primary) !important;
-    border: 1px solid var(--neural-connection) !important;
+    color: oklch(0.20 0.10 240) !important; /* Light Mode: Deep Navy */
+    border: 1px solid oklch(0.70 0.08 220) !important; /* Light Mode: Blue Connection */
     backdrop-filter: blur(12px);
     font-weight: 500;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
+  .dark .neural-button-secondary {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: oklch(0.90 0.02 200) !important; /* Dark Mode: Bright White */
+    border: 1px solid oklch(0.60 0.15 45) !important; /* Dark Mode: Golden Connection */
+  }
   
   .neural-button-secondary:hover {
     background: rgba(255, 255, 255, 0.08) !important;
-    color: var(--neural-accent) !important;
-    border-color: var(--neural-accent) !important;
+    color: oklch(0.55 0.18 220) !important; /* Light Mode: Strong Blue */
+    border-color: oklch(0.55 0.18 220) !important;
     transform: translateY(-2px);
     box-shadow: 
-      0 0 25px var(--neural-glow),
+      0 0 25px oklch(0.55 0.18 220 / 0.15),
       0 8px 25px rgba(0, 0, 0, 0.15);
   }
-  
-  /* Dark mode adjustments for secondary */
-  .dark .neural-button-secondary {
-    background: rgba(255, 255, 255, 0.05) !important;
-    color: var(--neural-primary) !important;
-  }
-  
   .dark .neural-button-secondary:hover {
     background: rgba(255, 255, 255, 0.12) !important;
-    color: var(--neural-accent) !important;
+    color: oklch(0.80 0.18 45) !important; /* Dark Mode: Bright Gold */
+    border-color: oklch(0.80 0.18 45) !important;
+    box-shadow: 
+      0 0 25px oklch(0.80 0.18 45 / 0.25),
+      0 8px 25px rgba(0, 0, 0, 0.15);
   }
   
   /* TERTIARY - Ultra-subtle for nav and small actions */
   .neural-button-tertiary {
     background: transparent !important;
-    color: var(--neural-primary) !important;
+    color: oklch(0.20 0.10 240) !important; /* Light Mode: Deep Navy */
     border: 1px solid transparent !important;
     font-weight: 500;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
+  .dark .neural-button-tertiary {
+    color: oklch(0.90 0.02 200) !important; /* Dark Mode: Bright White */
+  }
   
   .neural-button-tertiary:hover {
     background: rgba(255, 255, 255, 0.05) !important;
-    color: var(--neural-accent) !important;
-    border-color: var(--neural-connection) !important;
+    color: oklch(0.55 0.18 220) !important; /* Light Mode: Strong Blue */
+    border-color: oklch(0.70 0.08 220) !important; /* Light Mode: Blue Connection */
     transform: translateX(3px);
   }
-  
   .dark .neural-button-tertiary:hover {
     background: rgba(255, 255, 255, 0.08) !important;
+    color: oklch(0.80 0.18 45) !important; /* Dark Mode: Bright Gold */
+    border-color: oklch(0.60 0.15 45) !important; /* Dark Mode: Golden Connection */
   }
   
   /* Kinetic Typography */
@@ -277,7 +294,7 @@
     75% { transform: translateX(-5px) rotate(-0.3deg); }
   }
   
-  /* Neural Grid Background - Production Safe with Opacity Control */
+  /* Neural Grid Background - KISS Approach with Perfect Opacity Balance */
   .neural-grid {
     /* Base neutral grid that works in both themes */
     background-image: 
@@ -291,9 +308,9 @@
     opacity: 0.08;
   }
   
-  /* Dark mode: more visible */
+  /* Dark mode: subtle but visible (User feedback: was too strong at 0.3) */
   .dark .neural-grid {
-    opacity: 0.3;
+    opacity: 0.15;
   }
   
   @keyframes neural-grid-flow {
